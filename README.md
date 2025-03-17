@@ -105,7 +105,7 @@ graph LR
 
 The implementation on Azure Databricks (workflows > jobs) would be like it:
 
-![alt text](image/image/image-53.png)
+![alt text](image/image-53.png)
 
 **Figure 2** - *Retail job (for now, just working with customer table, not with entire proposed model).*
 
