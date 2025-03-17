@@ -1,0 +1,74 @@
+Table CUSTOMERS {
+  Customer_ID int [pk]
+  Social_Security_Number varchar(50)
+  Name varchar(100)
+  Email varchar(150)
+  Phone varchar(15)
+  Address varchar(200)
+  Zip_Code varchar(10)
+}
+
+Table BRANDS {
+  Brand_ID int [pk]
+  Brand_Description varchar(100)
+}
+
+Table CATEGORIES {
+  Category_ID int [pk]
+  Category_Description varchar(100)
+}
+
+Table PRODUCTS {
+  Product_ID int [pk]
+  Brand_ID int [ref: > BRANDS.Brand_ID]
+  Category_ID int [ref: > CATEGORIES.Category_ID]
+  SKU varchar(50)
+  Product_Description varchar(100)
+  Unit_Price decimal(10,2)
+}
+
+Table STORES {
+  Store_ID int [pk]
+  Store_Name varchar(100)
+  Store_District varchar(100)
+  Store_Region varchar(100)
+}
+
+Table PROMOTIONS {
+  Promotion_ID int [pk]
+  Product_ID int [ref: > PRODUCTS.Product_ID]
+  Promotion_Name varchar(255)
+  Promotion_Media_Type varchar(50)
+  Promotion_Begin_Date date
+  Promotion_End_Date date
+  Discount_Unit_Price decimal(10, 2)
+}
+
+Table PAYMENT_METHODS {
+  Payment_Method_ID int [pk]
+  Payment_Method_Description varchar(50)
+  Payment_Method_Group varchar(50)
+}
+
+Table INVENTORY {
+  Inventory_ID int [pk]
+  Product_ID int [ref: > PRODUCTS.Product_ID]
+  Store_ID int [ref: > STORES.Store_ID]
+  Stock_Quantity int
+  Average_Unit_Cost decimal(10,2)
+}
+
+Table SALES {
+  Sale_ID int [pk]
+  Customer_ID int [ref: > CUSTOMERS.Customer_ID]
+  Store_ID int [ref: > STORES.Store_ID]
+  Payment_Method_ID int [ref: > PAYMENT_METHODS.Payment_Method_ID]
+  Sales_Date date
+}
+
+Table TRANSACTION_ITEM {
+  Transaction_ID int [pk]
+  Sale_ID int [ref: > SALES.Sale_ID]
+  Product_ID int [ref: > PRODUCTS.Product_ID]
+  Transaction_Quantity int
+}
