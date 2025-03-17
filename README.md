@@ -1,5 +1,7 @@
 # Retail Sales Project with Azure and Databricks
 
+![alt text](image/image-65.png)
+
 ## Objective
 * Deepen my knowledge of Azure Databricks by building a complete data engineering pipeline.
 * Develop an ETL pipeline following the Medallion Architecture.
